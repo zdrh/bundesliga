@@ -97,7 +97,8 @@ class League extends BaseController {
         $data["title"] = "Liga";
         $data['menu'] = $this->menu;
         $data['liga'] = $this->lModel->getLeagueWithAssociation()->find($id);
-        $data['sezony'] = $this->lsModel->join('association_season', 'association_season.id_assoc_season=league_season.id_assoc_season', 'inner')->join('season', 'association_season.id_season=season.id_season', 'inner')->where('id_league', $id)->orderBy('season.start', 'asc')->findAll();
+        $sezony = $this->lsModel->join('association_season', 'association_season.id_assoc_season=league_season.id_assoc_season', 'inner')->join('season', 'association_season.id_season=season.id_season', 'inner')->where('id_league', $id)->orderBy('season.start', 'desc')->findAll();
+        $data['sezony'] = $this->arrayLib->links($sezony, 'league_name_in_season','link_name');
         $data['pocet_sezon'] = Count($data['sezony']);
         echo view('showLeague', $data);
     }

@@ -143,6 +143,10 @@ class LeagueSeason extends BaseController {
         
     }
 
+    function show($id_league_season) {
+        
+    }
+
     function listGroup($id_league_season) {
         $data["title"] = "Přidat sezonu soutěže";
         $data['menu'] = $this->menu;

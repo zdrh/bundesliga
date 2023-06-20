@@ -69,6 +69,7 @@ $routes->post('soutez/sezona/skupina/create', 'LeagueSeason::createGroup');
 $routes->get('soutez/(:any)/sezona/(:any)/editovat/skupina/(:num)','LeagueSeason::editGroup/$3');
 $routes->put('soutez/sezona/update', 'LeagueSeason::update');
 $routes->delete('soutez/(:any)/sezona/(:any)/smazat/soutez/(:num)','LeagueSeason::delete/$3');
+$routes->get('soutez/(:any)/sezona(:any)/(:num)', 'LeagueSeason::show/$3');
 
 
 $routes->get('seznam-tymu', 'Team::index');
