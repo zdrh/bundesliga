@@ -324,7 +324,7 @@ if (! function_exists('form_password')) {
 
 if(! function_exists('form_upload_bs')) {
 
-function form_upload_bs($data = '', string $bs = '', string $label = '', string $for='', string $type = 'file') {
+function form_upload_bs($data = '', string $bs = '', string $label = '', string $for='', string $type = 'file', $extra = array()) {
         $defaults = [
             'type'  => $type,
             'name'  => is_array($data) ? '' : $data,
@@ -340,7 +340,14 @@ function form_upload_bs($data = '', string $bs = '', string $label = '', string 
             $return.= '<label for="'.$for.'" class="form-label">'.$label."</label>\n";
         }
 
-        $return .= '<input class="form-control" ' . parse_form_attributes($data, $defaults) . " />\n</div>";
+        $return .= '<input class="form-control" ' . parse_form_attributes($data, $defaults);
+        if(is_array($extra)){
+            foreach($extra as $key => $value) {
+                $return .= " ".$key."=".$value;
+            }
+        }
+
+        $return .= " />\n</div>";
         return $return;
     }
 }
@@ -444,7 +451,7 @@ if (! function_exists('form_dropdown_bs')) {
      */
     function form_dropdown_bs($data = '', $options = [], string $bs = '', string $label = '', string $for= '', $selected = [], $disabled = [], $extra = '', $notation = true): string
     {
-
+        
         if($notation) {
             $quot = "\"";
             $endL = "\n";

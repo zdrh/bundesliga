@@ -75,7 +75,7 @@ class Season extends BaseController
     }
 
     function delete($id) {
-        $return = $this->sModel->delete($id);
+        $this->sModel->delete($id);
         return redirect()->route('seznam-sezon');
     }
 

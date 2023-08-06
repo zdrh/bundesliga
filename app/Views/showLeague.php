@@ -29,8 +29,8 @@ echo heading($liga->name, 1);
       }
       ?>
       <p class="card-text"><b>Organizátor: </b><?= $liga->general_name; ?></p>
-      <p class="card-text"><b>První sezóna: </b><?= $sezony[0]->start . "/" . $sezony[0]->finish; ?></p>
-      <p class="card-text"><b>Poslední sezóna: </b><?= $sezony[$pocet_sezon - 1]->start . "/" . $sezony[$pocet_sezon - 1]->finish; ?></p>
+      <p class="card-text"><b>První sezóna: </b><?= $sezony[$pocet_sezon - 1]->start . "/" . $sezony[$pocet_sezon - 1]->finish; ?></p>
+      <p class="card-text"><b>Poslední sezóna: </b><?= $sezony[0]->start . "/" . $sezony[0]->finish; ?></p>
     </div>
   </div>
   </div>

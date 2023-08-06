@@ -10,7 +10,7 @@ $hidden = array(
 
 );
 //'soutez/sezona/'.$sezona->id_league_season
-echo form_open('soutez/sezona');
+echo form_open('soutez/sezona/teams');
 $value = $sezona->start."-".$sezona->finish;
 $data = array(
     'disabled' => 'disabled',
@@ -20,7 +20,7 @@ $data = array(
 );
 
 echo form_input_bs($data, 'mb-3 mt-3 col-4', 'Sezóna', 'season');
-
+var_dump($sezona);
 $data = array(
     'disabled' => 'disabled',
     'value' => $sezona->league_name_in_season,

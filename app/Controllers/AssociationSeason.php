@@ -46,7 +46,7 @@ class AssociationSeason extends BaseController {
         $data['menu'] = $this->menu;
         $data['svaz'] = $this->aModel->find($id_association);
         $vysledek = array('start', 'finish');
-        $data['sezony'] = $this->arrayLib->dataForDropdown($this->sModel->orderBy('start', 'asc')->findAll(), 'id_season', $vysledek, '-');
+        $data['sezony'] = $this->arrayLib->dataForDropdown($this->sModel->orderBy('start', 'asc')->findAll(), 'id_season', $vysledek,true, '-');
         $sezonySvazu = $this->arrayLib->dataForDropdown($this->asModel->where('id_association', $id_association)->findAll(),'id_season','id_assoc_season');
         $extra = array('');
         $data['sezonySvazu'] = $this->arrayLib->addExtraForDropdown($data['sezony'], $sezonySvazu, $extra);
@@ -86,7 +86,7 @@ class AssociationSeason extends BaseController {
         $id_association = $this->asModel->find($id_assoc_season)->id_association;
         $data["aktualniSezona"] = $this->asModel->getSeasonsByAssociation($id_association)->find($id_assoc_season);
         $vysledek = array('start', 'finish');
-        $data['sezony'] = $this->arrayLib->dataForDropdown($this->sModel->orderBy('start', 'asc')->findAll(), 'id_season', $vysledek, '-');
+        $data['sezony'] = $this->arrayLib->dataForDropdown($this->sModel->orderBy('start', 'asc')->findAll(), 'id_season', $vysledek,true, '-');
         $sezonySvazu = $this->arrayLib->dataForDropdown($this->asModel->where('id_association', $id_association)->findAll(),'id_season','id_assoc_season');
         $remove = array($data['aktualniSezona']->id_season);
         $data['sezonySvazu'] = $this->arrayLib->addExtraForDropdown($data['sezony'], $sezonySvazu, [], $remove);

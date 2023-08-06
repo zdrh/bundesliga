@@ -31,26 +31,14 @@ class TeamLeagueSeason extends BaseController {
         $this->lsgModel = new lsgModel();
     }
 
-    function index($idLeagueSeasonGroup) {
-        $data["title"] = "Sezóna";
-        $data['menu'] = $this->menu;
-        $idLeagueSeason = $this->lsgModel->find($idLeagueSeasonGroup)->id_league_season;
-        $data['tymyAvailable'] = $this->tModel->getTeamsWithoutLeague($idLeagueSeason)->findAll();
-        $sezonaLiga = $this->lsgModel->join('league_season', 'league_season.id_league_season=league_season_group.id_league_season', 'inner')->join('association_season', 'association_season.id_assoc_season=league_season.id_assoc_season', 'inner')->join('season', 'season.id_season=association_season.id_season')->find($idLeagueSeasonGroup);
-        //var_dump($sezonaLiga);
-        $data['sezonaLiga'] = $this->arrayLib->links($sezonaLiga,'league_name_in_season', 'linkName', false);
-        $data['tymyLiga'] = $this->tlsModel->join('team', 'team.id_team=team_league_season.id_team', 'inner')->where('id_league_season', $idLeagueSeason)->orderBy('team.general_name', 'asc')->findAll();
-        $data['config'] = $this->config->crudForm;
-        echo view('showSeasonLeague', $data);
-
-    }
-
-    function add($idLeagueSeasonGroup) {
+   
+    function add($idLeagueSeason) {
         $data["title"] = "Přidat týmy do sezóny";
         $data['menu'] = $this->menu;
         $data['config'] = $this->config->crudForm;
-        $data['idSezona'] = $idLeagueSeasonGroup;
-        $idLeagueSeason = $this->lsgModel->find($idLeagueSeasonGroup)->id_league_season;
+        $data['idSezona'] = $idLeagueSeason;
+        $idLeagueSeasonGroup = $this->lsgModel->where('id_league_season', $idLeagueSeason)->findAll();
+        
         $data['sezona'] = $this->lsModel->join('association_season', 'association_season.id_assoc_season=league_season.id_assoc_season', 'inner')->join('league', 'league_season.id_league=league.id_league', 'inner')->join('season','season.id_season=association_season.id_season', 'inner')->find($idLeagueSeason);
         $tymyAvailable = $this->tModel->getTeamsWithoutLeague($idLeagueSeason)->findAll();
         $disabled = array('');
@@ -58,7 +46,7 @@ class TeamLeagueSeason extends BaseController {
         echo view('addTeamLeagueSeason', $data);
     }
 
-    function add2() {
+    function create() {
         $teamSeason = $this->request->getPost('teamSeason');
         $idLeagueSeasonGroup = $this->request->getPost('id_league_season');
         var_dump($teamSeason);

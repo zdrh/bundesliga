@@ -37,11 +37,16 @@ $this->section("content");
     );
 
     $extra = array('accept' => '.jpg, .png');
-    echo form_upload_bs($data, 'mb-3 mt-3 col-12 col-lg-3', 'Logo svazu', 'logo', '', $extra);
+    echo form_upload_bs($data, 'mb-3 mt-3 col-12 col-lg-3', 'Logo svazu', 'logo', 'file', $extra);
     $data = array(
         'class' => 'mb-3 mt-3 col-4'
     );
-    echo div($aktualniSezona->logo, $data);
+    $imgprop = array(
+        'src' => base_url($uploadPath.$aktualniSezona->logo),
+        'width' => 150
+    );
+    $img = img($imgprop);
+    echo div($aktualniSezona->logo."<br>".$img, $data);
     $data = array(
         'id' => 'id_season',
         'required' => 'required'

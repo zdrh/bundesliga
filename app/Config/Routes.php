@@ -29,47 +29,49 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('seznam-svazu', 'Association::index');
-$routes->get('svaz/pridat', 'Association::new');
-$routes->post('svaz/create', 'Association::create');
-$routes->get('svaz/editovat/(:num)', 'Association::edit/$1');
-$routes->put('svaz/update', 'Association::update');
-$routes->delete('svaz/smazat/(:num)', 'Association::delete/$1');
-$routes->get('svaz/zobrazit/(:num)', 'Association::show/$1');
+$routes->get('seznam-svazu', 'Association::index'); //*
+$routes->get('svaz/pridat', 'Association::new'); //*
+$routes->post('svaz/create', 'Association::create');//*
+$routes->get('svaz/editovat/(:num)', 'Association::edit/$1');//*
+$routes->put('svaz/update', 'Association::update');//*
+$routes->delete('svaz/smazat/(:num)', 'Association::delete/$1');//*
+$routes->get('svaz/zobrazit/(:num)', 'Association::show/$1');//*
 
-$routes->get('seznam-sezon', 'Season::index');
-$routes->get('sezona/pridat', 'Season::new');
-$routes->post('sezona/create', 'Season::create');
-$routes->get('sezona/editovat/(:num)', 'Season::edit/$1');
-$routes->put('sezona/update', 'Season::update');
-$routes->delete('sezona/smazat/(:num)', 'Season::delete/$1');
-$routes->get('sezona/zobrazit/(:any)/(:num)', 'Season::show/$2');
+$routes->get('seznam-sezon', 'Season::index');//*
+$routes->get('sezona/pridat', 'Season::new');//*
+$routes->post('sezona/create', 'Season::create');//*
+$routes->get('sezona/editovat/(:num)', 'Season::edit/$1');//*
+$routes->put('sezona/update', 'Season::update');//*
+$routes->delete('sezona/smazat/(:num)', 'Season::delete/$1');//*
+$routes->get('sezona/zobrazit/(:any)/(:num)', 'Season::show/$2');//*
 
-$routes->get('seznam-lig', 'League::index');
-$routes->get('liga/pridat', 'League::new');
-$routes->post('liga/create', 'League::create');
-$routes->get('liga/editovat/(:num)', 'League::edit/$1');
-$routes->put('liga/update', 'League::update');
-$routes->delete('liga/smazat/(:num)', 'League::delete/$1');
-$routes->get('liga/zobrazit/(:num)', 'League::show/$1');
+$routes->get('seznam-lig', 'League::index');//*
+$routes->get('liga/pridat', 'League::new');//*
+$routes->post('liga/create', 'League::create');//*
+$routes->get('liga/editovat/(:num)', 'League::edit/$1');//*
+$routes->put('liga/update', 'League::update');//*
+$routes->delete('liga/smazat/(:num)', 'League::delete/$1');//*
+$routes->get('liga/zobrazit/(:num)', 'League::show/$1');//*
 
-$routes->get('sezona/svaz/(:num)/pridat', 'AssociationSeason::new/$1');
-$routes->post('sezona/svaz/create', 'AssociationSeason::create');
-$routes->get('sezona/svaz/editovat/(:num)', 'AssociationSeason::edit/$1');
-$routes->put('sezona/svaz/update', 'AssociationSeason::update');
-$routes->delete('sezona/svaz/smazat/(:num)', 'AssociationSeason::delete/$1');
+$routes->get('sezona/svaz/(:num)/pridat', 'AssociationSeason::new/$1');//*
+$routes->post('sezona/svaz/create', 'AssociationSeason::create');//*
+$routes->get('sezona/svaz/editovat/(:num)', 'AssociationSeason::edit/$1');//*
+$routes->put('sezona/svaz/update', 'AssociationSeason::update');//*
+$routes->delete('sezona/svaz/smazat/(:num)', 'AssociationSeason::delete/$1');//*
 
-$routes->get('sezona/liga/(:num)/pridat', 'LeagueSeason::new/$1');
-$routes->post('sezona/liga/create', 'LeagueSeason::create');
-$routes->get('soutez/(:any)/sezona/(:any)/editovat/soutez/(:num)', 'LeagueSeason::edit/$3');
-$routes->get('soutez/(:any)/sezona/(:any)/sprava/skupin/(:num)', 'LeagueSeason::listGroup/$3');
-$routes->get('soutez/(:any)/sezona/(:any)/smazat/skupina/(:num)','LeagueSeason::deleteGroup/$3');
-$routes->get('soutez/(:any)/sezona/(:any)/pridat/skupina/(:num)','LeagueSeason::addGroup/$3');
-$routes->post('soutez/sezona/skupina/create', 'LeagueSeason::createGroup');
-$routes->get('soutez/(:any)/sezona/(:any)/editovat/skupina/(:num)','LeagueSeason::editGroup/$3');
-$routes->put('soutez/sezona/update', 'LeagueSeason::update');
-$routes->delete('soutez/(:any)/sezona/(:any)/smazat/soutez/(:num)','LeagueSeason::delete/$3');
-$routes->get('soutez/(:any)/sezona(:any)/(:num)', 'LeagueSeason::show/$3');
+$routes->get('sezona/liga/(:num)/pridat', 'LeagueSeason::new/$1');//*
+$routes->post('sezona/liga/create', 'LeagueSeason::create');//*
+$routes->get('soutez/(:any)/sezona/(:any)/editovat/soutez/(:num)', 'LeagueSeason::edit/$3');//*
+$routes->get('soutez/(:any)/sezona/(:any)/sprava/skupin/(:num)', 'LeagueSeason::listGroup/$3');//*
+$routes->delete('soutez/(:any)/sezona/(:any)/skupina/smazat/(:num)','LeagueSeason::deleteGroup/$3');
+$routes->get('soutez/(:any)/sezona/(:any)/pridat/skupina/(:num)','LeagueSeason::addGroup/$3');//*
+$routes->post('soutez/sezona/skupina/create', 'LeagueSeason::createGroup');//*
+$routes->get('soutez/(:any)/sezona/(:any)/editovat/skupina/(:num)','LeagueSeason::editGroup/$3');//*
+$routes->put('soutez/sezona/skupina/update', 'LeagueSeason::updateGroup');//*
+$routes->put('soutez/sezona/update', 'LeagueSeason::update');//*
+$routes->delete('soutez/(:any)/sezona/(:any)/smazat/soutez/(:num)','LeagueSeason::delete/$3');//*
+$routes->get('soutez/(:any)/sezona/(:any)/(:num)', 'LeagueSeason::show/$3');
+
 
 
 $routes->get('seznam-tymu', 'Team::index');
@@ -79,9 +81,9 @@ $routes->post('tym/create', 'Team::create');
 $routes->post('tym/createImport', 'Team::createImport');
 $routes->get('tym/editovat/(:num)', 'Team::edit/$1');
 
-$routes->get('soutez/(:any)/sezona/(:any)/(:num)', 'TeamLeagueSeason::index/$3');
+
 $routes->get('soutez/(:any)/sezona/(:any)/(:num)/pridat','TeamLeagueSeason::add/$3');
-$routes->post('soutez/sezona','TeamLeagueSeason::add2');
+$routes->post('soutez/sezona/teams','TeamLeagueSeason::create');
 
 /*
  * --------------------------------------------------------------------

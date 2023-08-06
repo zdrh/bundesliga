@@ -15,10 +15,8 @@ foreach($skupina as $row) {
     
     $edit = anchor('soutez/'.$ligaSezona->linkName.'/sezona/'.$sezona.'/editovat/skupina/'.$row->id_league_season_group, $config['editValue'], $config['editClass']);
     
-    $pole = array(
-        'id_group' => $row->id_team
-    );
-    $delete = form_open_rest('soutez/'.$ligaSezona->linkName.'/sezona/'.$sezona.'/smazat/skupina/'.$row->id_league_season_group, 'delete', "", 'bg-danger', $config['deleteValue']);
+  
+    $delete = form_open_rest('soutez/'.$ligaSezona->linkName.'/sezona/'.$sezona.'/skupina/smazat/'.$row->id_league_season_group, 'delete', "", 'bg-danger', $config['deleteValue']);
    $table->addRow($row->groupname, $edit." ".$delete);
 }
 

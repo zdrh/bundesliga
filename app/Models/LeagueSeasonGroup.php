@@ -15,7 +15,7 @@ class LeagueSeasonGroup extends Model {
 //jestli se místo opravdového mazání bude pouze nastavovat hodnota ve sloupci označeném v proměnném deleted_at. To bude v případě true, v příapdě false se bude reálně mazat.
     protected $useSoftDeletes = true;
 //sloupce v tabulce, se kterými budu dělat databázové operace (vkládání, mazání apod.). Ostatní sloupce měnit nepůjdou
-    protected $allowedFields = ['id_league_season', 'groupname'];
+    protected $allowedFields = ['id_league_season', 'groupname', 'regular'];
 
 // do sloupců s datem vytvoření záznamu, editace nebo smazání se budou vkládat timestampy (true) nebo jiný formát data psecifikovaný v proměnné $DateFormat
     protected $useTimestamps = true;

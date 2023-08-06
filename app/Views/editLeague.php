@@ -25,7 +25,7 @@ $this->section("content");
         'value' => $liga->level,
         'required' => 'required'
     );
-    echo form_input_bs($data, 'mb-3 mt-3 col-4', 'Úroveň', 'level','','', 'number');
+    echo form_input_bs($data, 'mb-3 mt-3 col-4', 'Úroveň', 'level', 'number');
 
     $active = array(
         '' => '--- Vyber ---',
